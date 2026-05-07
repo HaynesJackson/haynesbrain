@@ -39,6 +39,8 @@
             border-radius: 5px;
             padding: 1.25rem 1.5rem;
             margin-top: 1.25rem;
+            display: flex;
+            align-items: flex-start;
             }
         .project h3 {
             margin: 0 0 0.5rem 0;
@@ -48,6 +50,7 @@
         .project p {
             margin: 0;
             font-size: 0.9rem;
+            overflow: hidden;
             }
         .project a {
             display: inline-block;
@@ -56,9 +59,18 @@
             font-size: 0.85rem;
             text-decoration: none;
             }
+        .project img{
+            width: 100px; 
+            height: auto; 
+            margin-left: 10rem; 
+            border-radius: 4px;
+        }
         .project a:hover {
             color: #ffffff;
             }
+        .project div {
+            flex: 1;
+        }
         .subtitle {
             color: #888;
             font-size: 0.95rem;
@@ -66,11 +78,14 @@
             }
         .tight {
             margin-top: -0.75rem;
+        }
         .resume {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-left: 3px solid #ffffff;
             display: inline-block;
             margin-top: 1rem;
             padding: 0.6rem 1.25rem;
-            background: #ffffff;
             color: #0d0d0d;
             text-decoration: none;
             border-radius: 4px;
@@ -83,9 +98,18 @@
 
 
         .nav {
-            margin-bottom: 4rem;
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-left: 3px solid #ffffff;
+            border-radius: 5px;
+            padding: 1.25rem 1.5rem;
+            margin-top: 1.25rem;
+            display: flex;
+            align-items: flex-start;
+
             }
         .nav a {
+            border: 1px solid #2a2a2a2a;
             color: #888;
             text-decoration: none;
             margin-right: 1.75rem;
@@ -94,23 +118,20 @@
         .nav a:hover{
             color: #ffffff;
         }
-
     </style>
 </head>
-
 <body>
 
     <h1>Jackson Haynes</h1>
     <p class="subtitle">Honors Computer Science Student · Option in Cybersecurity</p>
     <p class='subtitle tight'>Oregon State University · Class of 2028</p>
 
-    <nav class="nav">
-        <a href="#about">About</a>
+    <nav class="nav" style="width: 22%;">
         <a href="#projects">Projects</a>
-        <a href="#resume">Resume</a>
+        <a href="resume.pdf" target="_blank">Resume</a>
     </nav>
 
-    <h2 id="about">About</h2>
+    <h2 id="about">About Me</h2>
     <p>
         Hello, I am a computer scientist at Oregon State University in Corvallis, OR.
         I am involved in multiple clubs at OSU, including DAMSEC (Cybersecurity), 
@@ -120,13 +141,50 @@
         and building an online platform to share his book. 
     </p>
 
-    <h2>Projects</h2>
+    <h2 id="projects">Projects</h2>
     
-    <div class="project">
-        <p>This will be my project</p>
+    <div class="project" id="crosswire">
+        <div>
+            <h3 id="crosswire-name"></h3>
+            <p id="crosswire-desc"></p>
+            <a id="crosswire-url" target="_blank">View on Github</a>
+        </div>
+        <img src="crosswire.png" alt="CrossWire cover">
     </div>
-      <div class="project">
-        <p>This will also be my project, more on that @5</p>
+
+      <div class="project" id="rpn">
+        <div>
+            <h3 id="rpn-name"></h3>
+            <p id="rpn-desc"></p>
+            <a id="rpn-url" target="_blank">View on Github</a>
+        </div>
+        <img src="rpn.png" alt="RPN cover">
     </div>
+
+    <script>
+        // js
+        function loadProject(repoName, idPrefix){
+            fetch( `https://api.github.com/repos/HaynesJackson/${repoName}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error, status: ${response.status}`);
+                } return response.json();
+            }) 
+            .then(repo => {
+                document.getElementById(`${idPrefix}-name`).textContent = repo.name;
+                document.getElementById(`${idPrefix}-desc`).textContent = repo.description;
+                document.getElementById(`${idPrefix}-url`).href = repo.html_url;
+            })
+            .catch(error => {
+                console.error('Fetch error:', error.message);
+                })
+            }
+        loadProject('CrossWire', 'crosswire');
+        loadProject('RPN-Calculator', 'rpn')
+
+
+    </script>
+    </body>
+</html>
         
 
