@@ -32,6 +32,25 @@
             line-height:1.7;
             color: #aaaaaa;
             }
+        .intro {
+            background: #0d0d0d0d;
+            margin-top: 1.25rem;
+            display: flex;
+        }
+        .subtitle {
+            color: #888;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            }
+        .tight {
+            margin-top: -0.75rem;
+        }
+        .intro img{
+            width: 150px; 
+            height: auto; 
+            margin-left: auto; 
+            border-radius: 4px;
+        }
         .project {
             background: #1a1a1a;
             border: 1px solid #2a2a2a;
@@ -71,14 +90,6 @@
         .project div {
             flex: 1;
         }
-        .subtitle {
-            color: #888;
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-            }
-        .tight {
-            margin-top: -0.75rem;
-        }
         .resume {
             background: #1a1a1a;
             border: 1px solid #2a2a2a;
@@ -103,7 +114,7 @@
             border-left: 3px solid #ffffff;
             border-radius: 5px;
             padding: 1.25rem 1.5rem;
-            margin-top: 1.25rem;
+            margin-top: 1rem;
             display: flex;
             align-items: flex-start;
 
@@ -121,10 +132,15 @@
     </style>
 </head>
 <body>
-
-    <h1>Jackson Haynes</h1>
-    <p class="subtitle">Honors Computer Science Student · Option in Cybersecurity</p>
-    <p class='subtitle tight'>Oregon State University · Class of 2028</p>
+    <div class="intro"> 
+        <div>
+            <!-- heres me! -->
+            <h1>Jackson Haynes</h1>
+            <p class="subtitle">Honors Computer Science · Option in Cybersecurity</p>
+            <p class='subtitle tight'>Oregon State University · Class of 2028</p>
+        </div>
+        <img src="profilepic.jpg" alt="ya boy">
+    </div>
 
     <nav class="nav" style="width: 22%;">
         <a href="#projects">Projects</a>
@@ -138,13 +154,21 @@
         Badminton Club, and ACM. Currently, I am a research asssistant working under
         a professor for the development of his new book; some of my tasks include
         weekly summarizations of the recent technological developments in the world,
-        and building an online platform to share his book. 
-    </p>
+        and building an online platform to share his book.
 
+        <!-- recreate logos, it sucks, probably an easier way -->
+    </p> 
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
+   <a href="https://www.linkedin.com/in/jackson-haynes-62992232b/" style="text-decoration: none;" target="_blank">
+    <span style="font-family: 'Source Sans Pro', sans-serif; padding: 1% 0 1% 1%; background-color: #0077B5; border-radius: 3px 0 0 3px; color: #000000;">Linked</span><span style="margin-right: 0.75rem; font-family: 'Source Sans Pro', sans-serif; padding: 1% 1% 1% 0; background-color: #0077B5; border-radius: 0 3px 3px 0; color: #ffffff;">In</span></a>
+    <link href="https://fonts.googleapis.com/css2?family=SOURCE+SANS+PRO&display=swap" rel="stylesheet">
+   <a href="https://github.com/HaynesJackson" style="text-decoration: none;" target="_blank">
+    <span style="font-size: 16px; font-family: 'Mona Sans', sans-serif; padding: 1.2%; background-color: #24292e; border-radius: 3px; color: #ffffff">GitHub</span></a>
     <h2 id="projects">Projects</h2>
     
     <div class="project" id="crosswire">
         <div>
+            <!-- my projects! -->
             <h3 id="crosswire-name"></h3>
             <p id="crosswire-desc"></p>
             <a id="crosswire-url" target="_blank">View on Github</a>
@@ -162,7 +186,7 @@
     </div>
 
     <script>
-        // js
+        // js, trying it out for the first time, fetches project info from github api and updates the page
         function loadProject(repoName, idPrefix){
             fetch( `https://api.github.com/repos/HaynesJackson/${repoName}`)
             .then(response => {
