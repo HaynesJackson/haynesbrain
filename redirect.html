@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>My Portfolio</title>
+</head>
+<body style="font-family: Arial, sans-serif; background: #0d0d0d; color: #f0f0f0; text-align: center; padding: 4rem 2rem;">
+    <p style="font-size: 1.5rem; color: #888; margin: 0 0 1rem;">Bringing you back in</p>
+    <p style="font-size: 6rem; font-weight: 500; margin: 0; line-height: 1;" id="count">5</p>
+    <img src="joke.jpg" alt="ya boy" style="width: 300px; border-radius: 12px; margin-top: 2rem;">
+
+    <script>
+        let n = 5;
+        const el = document.getElementById('count');
+        const interval = setInterval(() => {
+            n--;
+            if (n <= 0) {
+                clearInterval(interval);
+                el.textContent = '0';
+                setTimeout(() => window.location.href = 'index.html', 500);
+            } else {
+                el.textContent = n;
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

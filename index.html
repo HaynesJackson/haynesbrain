@@ -51,6 +51,66 @@
             margin-left: auto; 
             border-radius: 4px;
         }
+        .linkedin-left {
+            font-family: 'Source Sans Pro', sans-serif;
+            padding: 4px 0 4px 8px;
+            background-color: #0077B5;
+            border-radius: 3px 0 0 3px;
+            font-size: 15px;
+            color: #000000;
+        }
+        .linkedin-badge {
+            display: inline-block;
+            flex: none;
+            vertical-align: middle;
+        }
+
+        .linkedin-right {
+            font-family: 'Source Sans Pro', sans-serif;
+            padding: 4px 8px 4px 0;
+            background-color: #0077B5;
+            border-radius: 0 4.25px 3px 0;
+            font-size: 15px;
+            color: #ffffff;
+            margin-right: 1rem;
+        }
+
+        .linkedin-badge:hover .linkedin-left,
+        .linkedin-badge:hover .linkedin-right {
+            background-color: #005f8e;
+        }
+        .github-badge {
+            font-size: 15px;
+            font-family: 'Mona Sans', sans-serif;
+            padding: 5px 8.5px 6px 8.5px;
+            background-color: #24292e;
+            border-radius: 3px;
+            color: #ffffff;
+            vertical-align: middle;
+            margin-right: 1rem;
+        }
+
+        .github-badge:hover {
+            background-color: #3a3f47;
+        }
+        .my-portfolio-badge {
+            font-size: 15px;
+            padding: 5px 8.5px 6px 8.5px;
+            background-color: #856eca;
+            border-radius: 3px;
+            color: black;
+            vertical-align: middle;
+        }
+        .my-portfolio-badge:hover {
+            background-color: #aaaaaa;
+        }
+        .linkedin-left, .linkedin-right, .github-badge, .my-portfolio-badge{
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
         .project {
             background: #1a1a1a;
             border: 1px solid #2a2a2a;
@@ -87,7 +147,7 @@
         .project a:hover {
             color: #ffffff;
             }
-        .project div {
+        .project-info {
             flex: 1;
         }
         .resume {
@@ -130,6 +190,8 @@
             color: #ffffff;
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=SOURCE+SANS+PRO&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="intro"> 
@@ -158,16 +220,22 @@
 
         <!-- recreate logos, it sucks, probably an easier way -->
     </p> 
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
-   <a href="https://www.linkedin.com/in/jackson-haynes-62992232b/" style="text-decoration: none;" target="_blank">
-    <span style="font-family: 'Source Sans Pro', sans-serif; padding: 1% 0 1% 1%; background-color: #0077B5; border-radius: 3px 0 0 3px; color: #000000;">Linked</span><span style="margin-right: 0.75rem; font-family: 'Source Sans Pro', sans-serif; padding: 1% 1% 1% 0; background-color: #0077B5; border-radius: 0 3px 3px 0; color: #ffffff;">In</span></a>
-    <link href="https://fonts.googleapis.com/css2?family=SOURCE+SANS+PRO&display=swap" rel="stylesheet">
+    <h2 style="margin-bottom: 1rem; font-size: 12px; color: #aaaaaa;">Find Me On:</h2>
+    <a href="https://www.linkedin.com/in/jackson-haynes-62992232b/" style="text-decoration: none;" target="_blank">
+    <span class="linkedin-badge">
+        <span class="linkedin-left">Linked</span><span class="linkedin-right">In</span>
+    </span>
+</a>
    <a href="https://github.com/HaynesJackson" style="text-decoration: none;" target="_blank">
-    <span style="font-size: 16px; font-family: 'Mona Sans', sans-serif; padding: 1.2%; background-color: #24292e; border-radius: 3px; color: #ffffff">GitHub</span></a>
+    <span class="github-badge">GitHub</span></a>
+
+    <a href="redirect.html" style="text-decoration: none;">
+    <span class="my-portfolio-badge">My Portfolio</span></a>
+
     <h2 id="projects">Projects</h2>
     
     <div class="project" id="crosswire">
-        <div>
+        <div class="project-info">
             <!-- my projects! -->
             <h3 id="crosswire-name"></h3>
             <p id="crosswire-desc"></p>
@@ -177,7 +245,7 @@
     </div>
 
       <div class="project" id="rpn">
-        <div>
+        <div class="project-info">
             <h3 id="rpn-name"></h3>
             <p id="rpn-desc"></p>
             <a id="rpn-url" target="_blank">View on Github</a>
