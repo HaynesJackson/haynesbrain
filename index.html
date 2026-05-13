@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Jackson Haynes | Portfolio</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -220,11 +220,28 @@
         .nav a:hover{
             color: #ffffff;
         }
+        #back-to-top {
+            display: none;
+            position: fixed;
+            top: 2rem;
+            left: calc(50% + 370px); /* 370px = half of your 700px max-width + a little gap */
+            background: #1a1a1a;
+            color: #ffffff;
+            border: 1px solid #2a2a2a;
+            border-radius: 4px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+        #back-to-top:hover {
+            background: #3d3d3d;
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=SOURCE+SANS+PRO&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <button id="back-to-top">Top</button>
     <div class="intro"> 
         <div>
             <!-- heres me! -->
@@ -235,9 +252,10 @@
         <img src="profilepic.jpg" alt="ya boy">
     </div>
 
-    <nav class="nav" style="width: 22%;">
+    <nav class="nav" style="width: 33%; ">
         <a href="#projects">Projects</a>
         <a href="resume.pdf.pdf" target="_blank">Resume</a>
+        <a href="#exps">Currently</a>
     </nav>
 
     <h2 id="about">About Me</h2>
@@ -313,6 +331,21 @@ Design and train machine learning models to predict pathogen survival dynamics i
 
     <script>
         // js, trying it out for the first time, fetches project info from github api and updates the page
+        var btn = document.getElementById('back-to-top');
+        window.onscroll = function() {
+            scrollFunction();
+            };
+        function scrollFunction() {
+        // Show button after scrolling down 20px from the top
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+            }
+        btn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
         function loadProject(repoName, idPrefix){
             fetch( `https://api.github.com/repos/HaynesJackson/${repoName}`)
             .then(response => {
@@ -350,6 +383,15 @@ Design and train machine learning models to predict pathogen survival dynamics i
             const b = Math.round(start_color.b + (end_color.b - start_color.b) * scrollPercent);
 
             document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+        });
+        document.querySelectorAll('.nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                const offset = 80; // pixels above the element
+                const top = target.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top, behavior: 'smooth' });
+            });
         });
 
 
