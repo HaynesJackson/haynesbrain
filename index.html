@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Jackson Haynes | Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -161,7 +162,7 @@
             align-items: flex-start;
             }
         .exp h3 {
-            color: #3b3939;
+            color: #bd5514;
             font-size: 1rem;
             line-height:1%
             }
@@ -172,11 +173,10 @@
             color: #000000;
             }
         .exp a {
-            display: inline-block;
-            margin-top: 0.5rem;
+            margin: 0;
+            font-size: 0.9rem;
+            overflow: hidden;
             color: #000000;
-            font-size: 0.85rem;
-            text-decoration: none;
             }
         .exp-info{
             flex: 1;
@@ -284,14 +284,30 @@
         <img src="rpn.png" alt="RPN cover">
     </div>
 
-    <h2 id="exps">Experience</h2>
+    <h2 id="exps">Currently</h2>
 
-    <div class="exp" id="funk">
+    <div class="exp" id="funk" style="background-color: #1a1a1a; border: #1a1a1a; border-left: 3px solid #ffffff;">
         <div class="exp-info">
-            <h3><a href="https://engineering.oregonstate.edu/MIME" style="margin: 0 0 0.5rem 0; color: #3b3939; font-size: 1rem; text-decoration: underline;" target="_blank">Oregon State University School of MIME</a>, Corvallis, OR</h3>
-            <p style="font-style: italic; font-weight: bold; color: #ffffff; margin: 0 0 0.5rem 0;">Research Assistant/Website Developer · March 2025 - Present</p>
-            <p>Research and summarize technological developments every week, consisting of updates in logistics, AI, communications, global products, transportation for Dr. Kenneth Funk II. In addition, developing a website for Dr. Funk’s upcoming book to display and communicate additional information for reviewers/editors using Drupal CMS and HTML. 
- </p>
+            <h3><a href="https://engineering.oregonstate.edu/MIME" style="margin: 0 0 0.5rem 0; color: #e0691f; font-size: 1rem;" target="_blank">Oregon State University School of MIME</a>, Corvallis, OR</h3>
+            <p style="font-style: italic; font-weight: bold; color: #ffffff; margin: 0 0 0.5rem 0;">Research Assistant/Website Developer · <span style="font-style: normal;">Since March 2025</span></p>
+            <p style="color: #ffffff">Research and summarize technological developments every week, consisting of updates in logistics, AI, communications, global products, transportation for Dr. Kenneth Funk II. In addition, developing a <a href="https://research.engineering.oregonstate.edu/techgoodlife" style="color: #ffffff; text-decoration: underline;" target="_blank">website</a> for Dr. Funk’s upcoming book to display and communicate additional information for reviewers/editors using Drupal CMS and HTML. 
+    </p>
+        </div>
+    </div>
+    <div class="exp" id="research" style="background-color: #3d3d3d; border: #3d3d3d; border-left: 3px solid #ffffff;">
+        <div class="exp-info">
+            <h3><a href="https://foodsci.oregonstate.edu/" style="margin: 0 0 0.5rem 0; color: #e0691f; font-size: 1rem;" target="_blank">Oregon State University College of Agricultural Sciences</a>, Corvallis, OR</h3>
+            <p style="font-style: italic; font-weight: bold; color: #ffffff; margin: 0 0 0.5rem 0;">HC Research and Thesis · <span style="font-style: normal;">Since January 2026</span></p>
+</p>
+            <p style="color:#d4d4d4">Develop and implement Python-based analysis of bacterial colonies using OpenCV and NumPy
+Design and train machine learning models to predict pathogen survival dynamics in real-world food systems.</p>
+        </div>
+    </div>
+    <div class="exp" id="badminton" style="background-color: #6A6767; border: #6A6767; border-left: 3px solid #ffffff;">
+            <div class="exp-info">
+                <h3><a href="https://www.instagram.com/osu_badminton/" style="margin: 0 0 0.5rem 0; color: #e0691f; font-size: 1rem;" target="_blank">OSU Badminton Club</a>, <span style="color: #d4631d;">Corvallis, OR</span></h3>
+                <p style="font-style: italic; font-weight: bold; color: #ffffff; margin: 0 0 0.5rem 0;">Officer · <span style="font-style: normal;">Since September 2025</span></p>
+                <p style="color: #1a1a1a">Monitor club activities including weekly practices, intramural tournaments, and social events. Coordinate with the club president to plan and execute events, manage club communications, and maintain the club's reputation.</p>
         </div>
     </div>
 
@@ -315,6 +331,26 @@
             }
         loadProject('CrossWire', 'crosswire');
         loadProject('RPN-Calculator', 'rpn')
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const maxScroll = document.body.scrollHeight - window.innerHeight;
+            const startPoint = 0.4;
+            if (scrollY / maxScroll < startPoint) {
+                document.body.style.backgroundColor = '#0d0d0d';
+                return;
+            }
+            const scrollPercent = (scrollY / maxScroll - startPoint) / (1 - startPoint);
+        
+            const start_color = { r: 13, g: 13, b: 13 };
+            const end_color = { r: 90, g: 87, b: 87 };
+            
+            const r = Math.round(start_color.r + (end_color.r - start_color.r) * scrollPercent);
+            const g = Math.round(start_color.g + (end_color.g - start_color.g) * scrollPercent);
+            const b = Math.round(start_color.b + (end_color.b - start_color.b) * scrollPercent);
+
+            document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+        });
 
 
     </script>
