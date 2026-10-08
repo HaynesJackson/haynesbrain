@@ -111,8 +111,8 @@ export const Navbar = ({menuOpen, setMenuOpen}) => {
               Contact
             </Link>
             <div className="flex gap-2 text-gray-300 p-3 transition-colors hover:text-white">
-              <a href="/greatest_resume_of_all_time.pdf" title="View Résumé" aria-label="View Résumé in another tab" target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>Résumé</a>
-              <a href="/greatest_resume_of_all_time.pdf" title="Download Résumé" aria-label="Download Résumé" download onClick={handleDownload}
+              <a href={`${import.meta.env.BASE_URL}greatest_resume_of_all_time.pdf`} title="View Résumé" aria-label="View Résumé in another tab" target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>Résumé</a>
+              <a href={`${import.meta.env.BASE_URL}greatest_resume_of_all_time.pdf`} title="Download Résumé" aria-label="Download Résumé" download onClick={handleDownload}
                 >{isDownloaded 
                 ? 
                 <MdDownloadDone/> 
