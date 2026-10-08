@@ -19,11 +19,14 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
+        working-directory: haynesbrain
       - run: npm run build
+        working-directory: haynesbrain
       - run: cp dist/index.html dist/404.html
+        working-directory: haynesbrain
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: haynesbrain/dist
 
   deploy:
     needs: build
